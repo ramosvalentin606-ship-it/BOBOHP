@@ -1,5 +1,4 @@
 # app.py
-# app.py
 import streamlit as st
 import streamlit.components.v1 as components
 import datetime
@@ -55,28 +54,28 @@ st.markdown("""
     header {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Fondo general */
+    /* Fondo general - Tono más oscuro (rosa viejo/morado profundo) para resaltar la tarjeta */
     .stApp {
-        background: linear-gradient(135deg, #ffe6ea 0%, #fdfbfb 100%);
+        background: linear-gradient(135deg, #874c62 0%, #4a2e4b 100%);
         font-family: 'Poppins', sans-serif;
     }
 
     /* Tarjetas blancas con sombra */
     .card {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.95); /* Casi blanco sólido para máximo contraste */
         border-radius: 20px;
         padding: 30px;
-        box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.3);
+        box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.3); /* Sombra más fuerte para dar profundidad */
         backdrop-filter: blur(10px);
         text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Estilo de los textos */
+    /* Estilo de los textos - Muy oscuros para que se lean perfecto sobre el blanco */
     h1, h2, h3, p {
-        color: #6a4c70; /* Morado suave/oscuro */
+        color: #2b1029; 
         text-align: center;
     }
 
@@ -87,14 +86,14 @@ st.markdown("""
         height: 150px;
         object-fit: cover;
         border: 4px solid #ffb6c1;
-        box-shadow: 0 4px 15px rgba(255, 182, 193, 0.5);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         display: block;
         margin: 0 auto;
     }
 
     /* Estilo general para los botones nativos de Streamlit */
     div.stButton > button:first-child {
-        background-color: #ff9a9e;
+        background-color: #f77085; 
         color: white;
         border-radius: 25px;
         border: none;
@@ -102,22 +101,22 @@ st.markdown("""
         font-size: 16px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(255, 154, 158, 0.4);
+        box-shadow: 0 4px 10px rgba(247, 112, 133, 0.4);
         width: 100%;
     }
 
     div.stButton > button:first-child:hover {
-        background-color: #ff758c;
+        background-color: #e8556c;
         transform: translateY(-2px);
         color: white;
-        box-shadow: 0 6px 15px rgba(255, 117, 140, 0.5);
+        box-shadow: 0 6px 15px rgba(232, 85, 108, 0.5);
         border: none;
     }
 
     /* Contador de tiempo */
     .counter {
         font-size: 14px;
-        color: #ff758c;
+        color: #c04860; 
         text-align: center;
         margin-bottom: 20px;
         font-weight: 600;
@@ -128,7 +127,7 @@ st.markdown("""
         position: fixed;
         font-size: 20px;
         color: #ff758c;
-        opacity: 0.4;
+        opacity: 0.5;
         animation: float 8s infinite linear;
         z-index: 0;
         pointer-events: none;
@@ -201,9 +200,9 @@ if st.session_state.page == 1:
             <style>
                 #btn-no {
                     background-color: #f1f3f5;
-                    color: #6c757d;
+                    color: #495057;
                     border-radius: 25px;
-                    border: 1px solid #dee2e6;
+                    border: 1px solid #ced4da;
                     padding: 10px 24px;
                     font-size: 16px;
                     font-weight: 600;
@@ -213,6 +212,7 @@ if st.session_state.page == 1:
                     transition: top 0.15s ease, left 0.15s ease;
                     width: 100%;
                     box-sizing: border-box;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 }
                 body { margin: 0; padding: 0; overflow: hidden; height: 150px; position: relative;}
             </style>
@@ -343,8 +343,8 @@ elif st.session_state.page == 6:
     st.success(f"**💖 Plan:** {st.session_state.selected_plan}")
     
     st.markdown("""
-   <div style='background-color: #fff0f3; padding: 20px; border-radius: 15px; border-left: 5px solid #ff758c; margin-top: 20px; margin-bottom: 20px;'>
-        <p style='font-size: 16px; font-weight: 400; text-align: left; color: #4a2e4b;'>
+    <div style='background-color: #fff0f3; padding: 20px; border-radius: 15px; border-left: 5px solid #ff758c; margin-top: 20px; margin-bottom: 20px;'>
+        <p style='font-size: 16px; font-weight: 400; text-align: left; color: #2b1029;'>
         Gracias por aguantar a este hombre que a veces parece más frío de lo que realmente es.<br><br>
         Puede que no siempre encuentre las palabras más tiernas, pero quiero que sepas que te quiero muchísimo y que me haces muy feliz.<br><br>
         <b>Ahora prepárate porque tenemos una cita pendiente ❤️</b>
