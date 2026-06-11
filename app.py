@@ -54,28 +54,28 @@ st.markdown("""
     header {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Fondo general */
+    /* Fondo general - Tonos rosa vieja y malva para mejor contraste */
     .stApp {
-        background: linear-gradient(135deg, #ffe6ea 0%, #fdfbfb 100%);
+        background: linear-gradient(135deg, #e0aeb9 0%, #c9a7b9 100%);
         font-family: 'Poppins', sans-serif;
     }
 
     /* Tarjetas blancas con sombra */
     .card {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.90); /* Un poco más opaca para resaltar el texto */
         border-radius: 20px;
         padding: 30px;
-        box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.3);
+        box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
         backdrop-filter: blur(10px);
         text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.6);
     }
 
-    /* Estilo de los textos */
+    /* Estilo de los textos - Morado más oscuro y profundo */
     h1, h2, h3, p {
-        color: #6a4c70; /* Morado suave/oscuro */
+        color: #4a2e4b; 
         text-align: center;
     }
 
@@ -86,14 +86,14 @@ st.markdown("""
         height: 150px;
         object-fit: cover;
         border: 4px solid #ffb6c1;
-        box-shadow: 0 4px 15px rgba(255, 182, 193, 0.5);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         display: block;
         margin: 0 auto;
     }
 
     /* Estilo general para los botones nativos de Streamlit */
     div.stButton > button:first-child {
-        background-color: #ff9a9e;
+        background-color: #f77085; /* Rosa un poco más fuerte */
         color: white;
         border-radius: 25px;
         border: none;
@@ -101,22 +101,22 @@ st.markdown("""
         font-size: 16px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(255, 154, 158, 0.4);
+        box-shadow: 0 4px 10px rgba(247, 112, 133, 0.4);
         width: 100%;
     }
 
     div.stButton > button:first-child:hover {
-        background-color: #ff758c;
+        background-color: #e8556c;
         transform: translateY(-2px);
         color: white;
-        box-shadow: 0 6px 15px rgba(255, 117, 140, 0.5);
+        box-shadow: 0 6px 15px rgba(232, 85, 108, 0.5);
         border: none;
     }
 
     /* Contador de tiempo */
     .counter {
         font-size: 14px;
-        color: #ff758c;
+        color: #c04860; /* Tono más oscuro para el contador */
         text-align: center;
         margin-bottom: 20px;
         font-weight: 600;
@@ -127,7 +127,7 @@ st.markdown("""
         position: fixed;
         font-size: 20px;
         color: #ff758c;
-        opacity: 0.4;
+        opacity: 0.5;
         animation: float 8s infinite linear;
         z-index: 0;
         pointer-events: none;
@@ -200,9 +200,9 @@ if st.session_state.page == 1:
             <style>
                 #btn-no {
                     background-color: #f1f3f5;
-                    color: #6c757d;
+                    color: #495057;
                     border-radius: 25px;
-                    border: 1px solid #dee2e6;
+                    border: 1px solid #ced4da;
                     padding: 10px 24px;
                     font-size: 16px;
                     font-weight: 600;
@@ -212,6 +212,7 @@ if st.session_state.page == 1:
                     transition: top 0.15s ease, left 0.15s ease;
                     width: 100%;
                     box-sizing: border-box;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 }
                 body { margin: 0; padding: 0; overflow: hidden; height: 150px; position: relative;}
             </style>
@@ -232,129 +233,3 @@ if st.session_state.page == 1:
 # ---------------------------------
 # PANTALLA 2: Aceptación
 # ---------------------------------
-elif st.session_state.page == 2:
-    st.balloons() # Animación de confeti/globos
-    st.markdown("<h1>🥹 ¿De verdad dijiste que sí?</h1>", unsafe_allow_html=True)
-    st.markdown("<h3>Sabía que tenía una oportunidad contigo ❤️</h3>", unsafe_allow_html=True)
-    st.image("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc29lYWZ5NmZ5M2x3ZGExMzhzYnQwbmt6N3ZqZWx3YmR6aW9wN2I4biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vz58J8shFW6BvqnYTm/giphy.gif", use_container_width=True) # GIF lindo opcional
-    
-    st.write("")
-    if st.button("Continuar ✨", use_container_width=True):
-        set_page(3)
-        st.rerun()
-
-# ---------------------------------
-# PANTALLA 3: Fecha y Hora
-# ---------------------------------
-elif st.session_state.page == 3:
-    st.markdown("<h1>📅 Ahora elige el día</h1>", unsafe_allow_html=True)
-    st.write("Dime cuándo estás libre para mí:")
-    
-    col_fecha, col_hora = st.columns(2)
-    with col_fecha:
-        fecha = st.date_input("Día de la cita")
-    with col_hora:
-        hora = st.time_input("Hora de la cita")
-        
-    st.write("")
-    if st.button("Reservar cita ❤️", use_container_width=True):
-        if fecha and hora:
-            st.session_state.selected_date = fecha
-            st.session_state.selected_time = hora
-            set_page(4)
-            st.rerun()
-        else:
-            st.error("Por favor, completa la fecha y la hora mi amor.")
-
-# ---------------------------------
-# PANTALLA 4: Elección del Plan
-# ---------------------------------
-elif st.session_state.page == 4:
-    st.markdown("<h1>🍽️ ¿Qué te provoca?</h1>", unsafe_allow_html=True)
-    
-    planes = [
-        "🍔 Hamburguesa", "🍕 Pizza", "🍣 Sushi", 
-        "🌮 Tacos", "🍦 Helado", "☕ Café", 
-        "🎬 Cine", "🌳 Picnic", "🎁 Sorpresa"
-    ]
-    
-    # Grid de botones (3x3)
-    cols = st.columns(3)
-    for i, plan in enumerate(planes):
-        with cols[i % 3]:
-            # Resaltar si ya está seleccionado
-            is_selected = st.session_state.selected_plan == plan
-            button_type = "primary" if is_selected else "secondary"
-            
-            if st.button(plan, use_container_width=True, type=button_type, key=f"plan_{i}"):
-                st.session_state.selected_plan = plan
-                st.rerun()
-                
-    if st.session_state.selected_plan:
-        st.success(f"¡Excelente elección! Vamos por: **{st.session_state.selected_plan}**")
-        
-    st.write("")
-    if st.button("Continuar ✨", use_container_width=True):
-        if st.session_state.selected_plan:
-            set_page(5)
-            st.rerun()
-        else:
-            st.warning("Elige un plan primero 🥺")
-
-# ---------------------------------
-# PANTALLA 5: Razones
-# ---------------------------------
-elif st.session_state.page == 5:
-    st.markdown("<h1>❤️ Antes de terminar...</h1>", unsafe_allow_html=True)
-    
-    razones = [
-        "Porque me haces sonreír todos los días.",
-        "Porque siempre me apoyas en todo.",
-        "Porque eres la mujer más hermosa.",
-        "Porque haces mejores mis días grises.",
-        "Porque contigo todo es más divertido y espontáneo.",
-        "Porque eres una persona increíble y admiro cómo eres.",
-        "Porque me encanta escucharte hablar por horas.",
-        "Porque me haces sentir el hombre más afortunado del mundo."
-    ]
-    
-    if st.button("Razón aleatoria por la que me gustas 🥰", use_container_width=True):
-        st.session_state.reason = random.choice(razones)
-        
-    if st.session_state.reason:
-        st.info(f"✨ **{st.session_state.reason}**")
-        
-    st.write("")
-    if st.button("Ver sorpresa final 🎁", use_container_width=True):
-        set_page(6)
-        st.rerun()
-
-# ---------------------------------
-# PANTALLA 6: Final (Resumen)
-# ---------------------------------
-elif st.session_state.page == 6:
-    st.balloons()
-    st.markdown("<h1>Perfecto mi reina ❤️</h1>", unsafe_allow_html=True)
-    
-    st.markdown("### 💌 Resumen de nuestra cita:")
-    st.success(f"**📅 Fecha:** {st.session_state.selected_date.strftime('%d de %B, %Y')}")
-    st.success(f"**⏰ Hora:** {st.session_state.selected_time.strftime('%I:%M %p')}")
-    st.success(f"**💖 Plan:** {st.session_state.selected_plan}")
-    
-    st.markdown("""
-    <div style='background-color: #fff0f3; padding: 20px; border-radius: 15px; border-left: 5px solid #ff758c; margin-top: 20px; margin-bottom: 20px;'>
-        <p style='font-size: 16px; font-weight: 400; text-align: left;'>
-        Gracias por aguantar a este hombre que a veces parece más frío de lo que realmente es.<br><br>
-        Puede que no siempre encuentre las palabras más tiernas, pero quiero que sepas que te quiero muchísimo y que me haces muy feliz.<br><br>
-        <b>Ahora prepárate porque tenemos una cita pendiente ❤️</b>
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    if st.button("Reiniciar experiencia 🔄", use_container_width=True):
-        # Limpiar el estado y volver al inicio
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.rerun()
-
-st.markdown('</div>', unsafe_allow_html=True) # Cierra el div class="card"
